@@ -1,0 +1,523 @@
+/* Authentication Pages Styles */
+.auth-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a0033 0%, #2d1b69 25%, #4a148c 50%, #6a1b9a 75%, #8e24aa 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.auth-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    position: relative;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h1 {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.auth-header p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Registration page specific styles */
+body:has(form#registerForm) .auth-content {
+    padding: 20px 30px;
+}
+
+body:has(form#registerForm) .auth-header {
+    margin-bottom: 20px;
+}
+
+body:has(form#registerForm) .auth-form {
+    gap: 15px;
+}
+
+body:has(form#registerForm) .auth-footer {
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    padding: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    border-color: #ffd54f;
+    box-shadow: 0 0 20px rgba(255, 213, 79, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.checkbox-group {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    cursor: pointer;
+    flex: 1;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    border-color: #ff6b35;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.forgot-password {
+    color: #ffd54f;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #ffecb3;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.divider {
+    text-align: center;
+    position: relative;
+    margin: 20px 0;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.divider span {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+}
+
+.btn-google {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-google:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth-footer p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.link {
+    color: #ffd54f;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #ffecb3;
+    text-decoration: underline;
+}
+
+/* Visual Elements for Auth Pages */
+.auth-visual {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-books {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.book-small {
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(45deg, #8d4e85, #b8860b);
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: floatSmall 8s ease-in-out infinite;
+}
+
+.book-small::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 1px;
+}
+
+.book-small.book-1 {
+    top: 15%;
+    left: 5%;
+    animation-delay: 0s;
+    transform: rotate(-20deg);
+}
+
+.book-small.book-2 {
+    top: 70%;
+    right: 8%;
+    animation-delay: -3s;
+    transform: rotate(15deg);
+}
+
+.book-small.book-3 {
+    bottom: 20%;
+    left: 10%;
+    animation-delay: -6s;
+    transform: rotate(-10deg);
+}
+
+.brain-small {
+    position: absolute;
+    bottom: 15%;
+    right: 15%;
+    width: 80px;
+    height: 60px;
+}
+
+.neural-glow {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 188, 212, 0.3), transparent);
+    border-radius: 50%;
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes floatSmall {
+    0%, 100% { transform: translateY(0px) rotate(var(--rotation, 0deg)); }
+    50% { transform: translateY(-15px) rotate(var(--rotation, 0deg)); }
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .auth-content {
+        max-width: 450px;
+        padding: 25px;
+    }
+    
+    .auth-header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 15px;
+    }
+    
+    .auth-content {
+        padding: 20px;
+        margin: 0;
+        max-width: 100%;
+        width: calc(100% - 30px);
+        border-radius: 15px;
+    }
+    
+    .auth-header {
+        margin-bottom: 25px;
+    }
+    
+    .auth-header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .auth-header p {
+        font-size: 0.9rem;
+    }
+    
+    .auth-form {
+        gap: 15px;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    
+    .checkbox-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .forgot-password {
+        align-self: flex-end;
+        margin-top: 5px;
+    }
+    
+    .auth-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    
+    .btn-google {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    
+    .book-small {
+        width: 35px;
+        height: 25px;
+    }
+    
+    .brain-small {
+        width: 60px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 10px;
+        min-height: 100vh;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+    
+    .auth-content {
+        padding: 15px;
+        width: calc(100% - 20px);
+        border-radius: 12px;
+        min-height: auto;
+    }
+    
+    .auth-header h1 {
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+    }
+    
+    .auth-header p {
+        font-size: 0.8rem;
+    }
+    
+    .auth-header {
+        margin-bottom: 20px;
+    }
+    
+    .form-group {
+        gap: 6px;
+    }
+    
+    .form-group label {
+        font-size: 0.8rem;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+        padding: 8px;
+        font-size: 0.8rem;
+        border-radius: 6px;
+    }
+    
+    .checkbox-label {
+        font-size: 0.8rem;
+    }
+    
+    .auth-btn {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .btn-google {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+    
+    .divider {
+        margin: 15px 0;
+    }
+    
+    .auth-footer {
+        margin-top: 20px;
+    }
+    
+    .auth-footer p {
+        font-size: 0.8rem;
+    }
+    
+    .book-small {
+        width: 25px;
+        height: 18px;
+    }
+    
+    .brain-small {
+        width: 40px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 320px) {
+    .auth-container {
+        padding: 5px;
+        padding-top: 15px;
+    }
+    
+    .auth-content {
+        padding: 12px;
+        width: calc(100% - 10px);
+    }
+    
+    .auth-header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+        padding: 6px;
+        font-size: 0.75rem;
+    }
+    
+    .auth-btn,
+    .btn-google {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+}
