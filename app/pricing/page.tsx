@@ -3,7 +3,8 @@
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import PricingSection from "@/components/PricingSection";
-import { paddleConfig, PlanType } from "@/lib/paddle-config";
+import { usePaddle } from '@/components/PaddleProvider'
+import { paddleConfig, PlanType } from '@/lib/paddle-config';
 
 export default function PricingPage() {
   const userProfile = useQuery(api.subscriptions.getUserProfile);
