@@ -10,11 +10,24 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Calendar, CreditCard, AlertCircle, CheckCircle } from "lucide-react";
 import { paddleConfig, PlanType } from "@/lib/paddle-config";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState, Suspense } from "react";
 
-export default function SubscriptionPage() {
+function SubscriptionPageClient() {
+  const searchParams = useSearchParams();
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const userProfile = useQuery(api.subscriptions.getUserProfile);
   const subscriptionHistory = useQuery(api.subscriptions.getSubscriptionHistory);
   const cancelSubscription = useMutation(api.subscriptions.cancelSubscription);
+
+  useEffect(() => {
+    if (searchParams.get('success') === 'true') {
+      setShowSuccessMessage(true);
+      // Auto-hide after 10 seconds
+      const timer = setTimeout(() => setShowSuccessMessage(false), 10000);
+      return () => clearTimeout(timer);
+    }
+  }, [searchParams]);
 
   if (!userProfile) {
     return (
@@ -89,6 +102,16 @@ export default function SubscriptionPage() {
             Manage your subscription and billing information
           </p>
         </div>
+
+        {/* Success Message */}
+        {showSuccessMessage && (
+          <Alert className="mb-8 border-green-200 bg-green-50">
+            <CheckCircle className="h-4 w-4 text-green-600" />
+            <AlertDescription className="text-green-800">
+              🎉 <strong>Subscription successful!</strong> Welcome to your new plan. Your subscription is now active and you can start using all the premium features.
+            </AlertDescription>
+          </Alert>
+        )}
 
         {/* Current Subscription */}
         <Card className="mb-8">
@@ -174,7 +197,7 @@ export default function SubscriptionPage() {
             ) : (
               <div className="text-center py-8">
                 <p className="text-muted-foreground mb-4">
-                  You don't have an active subscription.
+                  You don&apos;t have an active subscription.
                 </p>
                 <Button asChild>
                   <Link href="/pricing">Choose a Plan</Link>
@@ -260,5 +283,13 @@ export default function SubscriptionPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SubscriptionPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><p className="text-muted-foreground">Loading subscription...</p></div>}>
+      <SubscriptionPageClient />
+    </Suspense>
   );
 }

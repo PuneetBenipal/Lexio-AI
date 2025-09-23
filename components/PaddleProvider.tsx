@@ -6,6 +6,24 @@ import { paddleConfig } from '@/lib/paddle-config';
 import { CheckoutData } from '@/types/paddle';
 import { useUser } from '@clerk/nextjs';
 
+interface PaddleCheckoutOptions {
+  items: Array<{
+    priceId: string;
+    quantity: number;
+  }>;
+  customData?: {
+    userId: string;
+    [key: string]: unknown;
+  };
+  customer?: {
+    email: string;
+  };
+  settings?: {
+    successUrl: string;
+    allowLogout: boolean;
+  };
+}
+
 interface PaddleContextType {
   paddle: Paddle | null;
   isLoading: boolean;
@@ -71,11 +89,15 @@ export default function PaddleProvider({ children }: PaddleProviderProps) {
     }
 
     try {
-      const checkoutOptions: any = {
+      const checkoutOptions: PaddleCheckoutOptions = {
         items: checkoutData.items,
         customData: {
           ...checkoutData.customData,
           userId: user.id,
+        },
+        settings: {
+          successUrl: `${window.location.origin}/subscription?success=true`,
+          allowLogout: false,
         },
       };
 
@@ -86,7 +108,7 @@ export default function PaddleProvider({ children }: PaddleProviderProps) {
         };
       }
 
-      await paddle.Checkout.open(checkoutOptions);
+      await paddle.Checkout.open(checkoutOptions as Parameters<typeof paddle.Checkout.open>[0]);
     } catch (err) {
       console.error('Checkout error:', err);
       throw err;
